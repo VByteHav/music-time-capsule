@@ -1,5 +1,6 @@
 import React from 'react'
 import Home from '@/components/Home'
+import Navbar from '@/components/Navbar'
 const page = () => {
   return (
   <>
@@ -9,7 +10,9 @@ const page = () => {
         <meta property="og:image" content="/favicon.png" />
         <meta property="og:url" content="https://music-time-capsule.vercel.app/" />
       </head>
+      
      <body>
+     <Navbar/>
      <Home />
      </body> 
       </>
