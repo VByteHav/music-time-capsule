@@ -12,8 +12,8 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import Link from "next/link";
-// Register Chart.js components
+
+
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const timeRangeMap = {
@@ -92,8 +92,8 @@ const DashboardPage = () => {
           font: {
             size: 14,
           },
-          mirror: false, // Fix text glitching
-          align: "start", // Adjust text positioning
+          mirror: false, 
+          align: "start",
         },
         grid: {
           display: false,
