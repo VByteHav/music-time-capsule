@@ -2,7 +2,6 @@ import NextAuth from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
 import axios from "axios";
 
-
 async function refreshAccessToken(token) {
   try {
     const response = await axios.post(
@@ -19,13 +18,12 @@ async function refreshAccessToken(token) {
     return {
       ...token,
       accessToken: response.data.access_token,
-      expiresAt: Date.now() + account.expires_at * 1000,
-      // Expires in 1 hour
+      expiresAt: Date.now() + response.data.expires_in * 1000, // Fix: Correct expiry calculation
       refreshToken: response.data.refresh_token ?? token.refreshToken, // Keep old refresh token if none returned
     };
   } catch (error) {
     console.error("Error refreshing Spotify token:", error.response?.data || error.message);
-    return { ...token, error: "RefreshTokenError" }; 
+    return { ...token, error: "RefreshTokenError" };
   }
 }
 
@@ -43,7 +41,7 @@ export const authOptions = {
             "user-top-read",
             "user-read-recently-played",
           ].join(" "),
-          show_dialog: true, 
+          show_dialog: true,
         },
       },
     }),
@@ -55,7 +53,7 @@ export const authOptions = {
         return {
           accessToken: account.access_token,
           refreshToken: account.refresh_token,
-          expiresAt: Date.now() + account.expires_at * 1000,
+          expiresAt: Date.now() + account.expires_in * 1000, // Fix: Use `expires_in`
         };
       }
 
@@ -70,7 +68,7 @@ export const authOptions = {
     async session({ session, token }) {
       session.accessToken = token.accessToken;
       session.refreshToken = token.refreshToken;
-      session.error = token.error || null; 
+      session.error = token.error || null;
       return session;
     },
 
@@ -80,7 +78,7 @@ export const authOptions = {
   },
 
   pages: {
-    signIn: "/login", 
+    signIn: "/login",
     error: "/auth/error",
   },
 
