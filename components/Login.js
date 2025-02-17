@@ -26,7 +26,7 @@ export default function Login() {
 
         <h1 className="text-3xl font-bold mb-4 text-green-400">MT-Capsule</h1>
         <p className="text-gray-300 mb-6">
-          Log in with Spotify to explore your personalized music experience.
+          Log in with Spotify to explore your personalized music experience. <span className="text-red-500">Login feature is currently not working as spotify has'nt accepted api extension request :( </span> 
         </p>
 
 
@@ -39,7 +39,7 @@ export default function Login() {
 
 
         <p className="text-gray-400 text-sm mt-4">
-          Don't worry, we never post anything on your behalf!
+          Don't worry, we never post anything on your behalf! 
         </p>
       </motion.div>
     </div>
