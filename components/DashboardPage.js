@@ -153,7 +153,7 @@ const DashboardPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-2xl font-bold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent"
           >
-            You are a hardcore {topGenre} fan.
+            You are a hardcore "{topGenre}" fan.
           </motion.h2>
         )}
       </section>
