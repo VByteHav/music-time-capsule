@@ -93,16 +93,16 @@ const Home = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.5 }}
       >
-        <motion.button
+      <Link href="/login">  <motion.button
           className="px-8 py-4 bg-green-500 hover:bg-green-400 text-black font-bold rounded-full 
                     transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-green-500/30
                     flex items-center gap-2"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-      <Link href="/login">    <span>Start Exploring</span> </Link>
+          <span>Start Exploring</span> 
           <span aria-hidden="true">🚀</span>
-        </motion.button>
+        </motion.button></Link>
       </motion.div>
     </main>
   );
